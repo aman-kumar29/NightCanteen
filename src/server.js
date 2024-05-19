@@ -27,9 +27,7 @@ app.use(
         }
     )
 );
-app.get('/', (req,res)=>{
-    res.send("Bakend server is up---");
-})
+
 
 app.use('/api/foods', foodRouter);
 app.use('/api/users', userRouter);
