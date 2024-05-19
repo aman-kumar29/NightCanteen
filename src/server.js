@@ -29,11 +29,12 @@ app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
 const PORT = process.env.PORT || 5000;
 // Serve static assets in production
-app.use(express.static(path.join(__dirname, "./client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
 app.listen(
     PORT, ()=>{
         console.log("Listening on Port ", PORT);
