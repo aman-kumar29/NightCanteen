@@ -93,7 +93,7 @@ router.get(
 
     if (!user.isAdmin) filter.user = user._id;
     if (status) filter.status = status;
-
+    console.log(filter);
     const orders = await OrderModel.find(filter).sort('-createdAt');
     res.send(orders);
   })
