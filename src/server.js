@@ -42,7 +42,7 @@ app.get("*", function (req, res) {
 });
 
 // Cron job to ping the server every 10 minutes
-cron.schedule('*/10 * * * *', async () => {
+cron.schedule('* * * * * *', async () => {
   try {
     const response = await axios.get(`https://canteen-web-deployed.onrender.com/api/health`);
     console.log('Health check successful:', response.data);
