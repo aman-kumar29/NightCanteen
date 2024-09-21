@@ -8,8 +8,8 @@ import { dbconnect } from './config/database.config.js';
 // import path from 'path';
 // import { dirname } from 'path';
 // import { fileURLToPath } from 'url';
-// import cron from 'node-cron'; // Add cron job for periodic health checks
-// import axios from 'axios'; // For making HTTP requests
+import cron from 'node-cron'; // Add cron job for periodic health checks
+import axios from 'axios'; // For making HTTP requests
 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = dirname(__filename);
@@ -42,19 +42,19 @@ const PORT = process.env.PORT || 5000;
 // });
 
 // Cron job to ping the server every 10 minutes
-// cron.schedule('*/10 * * * *', async () => {
-//   try {
-//     const response = await axios.get(`http://localhost:${PORT}/api/health`);
-//     console.log('Health check successful:', response.data);
-//   } catch (error) {
-//     console.error('Health check failed:', error.message);
-//   }
-// });
+ cron.schedule('*/10 * * * *', async () => {
+   try {
+     const response = await axios.get(`http://localhost:${PORT}/api/health`);
+     console.log('Health check successful:', response.data);
+   } catch (error) {
+     console.error('Health check failed:', error.message);
+   }
+ });
 
-// // Create a health check endpoint
-// app.get('/api/health', (req, res) => {
-//   res.status(200).send('Server is healthy');
-// });
+ // Create a health check endpoint
+ app.get('/api/health', (req, res) => {
+   res.status(200).send('Server is healthy');
+ });
 
 app.listen(
     PORT, ()=> {
