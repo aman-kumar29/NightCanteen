@@ -42,9 +42,9 @@ const PORT = process.env.PORT || 5000;
 // });
 
 // Cron job to ping the server every 10 minutes
- cron.schedule('*/10 * * * *', async () => {
+ cron.schedule('*/5 * * * *', async () => {
    try {
-     const response = await axios.get(`http://localhost:${PORT}/api/health`);
+     const response = await axios.get(`https://night-canteen-ak.onrender.com/api/health`);
      console.log('Health check successful:', response.data);
    } catch (error) {
      console.error('Health check failed:', error.message);
